@@ -1,8 +1,7 @@
 {
-  "name": "@open-project-templates/nodejs-module-typescript",
+  "name": "@speedup/notification-sms-smsir",
   "version": "1.0.0",
-  "private": true,
-  "description": "NodeJS module that has been written in TypeScript language",
+  "description": "Client implementation for SMS.ir",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist/",
@@ -16,27 +15,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/open-project-templates/nodejs-module-typescript.git"
+    "url": "git+https://github.com/SpeedUp-io/nodejs-notification-sms-smsir.git"
   },
   "keywords": [
-    "open-project",
-    "open-project-template",
-    "template",
-    "nodejs",
-    "typescript",
-    "npm",
-    "module"
+    "speedup",
+    "sms",
+    "sms-ir",
+    "text",
+    "message"
   ],
   "types": "index.d.ts",
   "author": "Open Project Templates",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/open-project-templates/nodejs-module-typescript/issues"
+    "url": "https://github.com/SpeedUp-io/nodejs-notification-sms-smsir/issues"
   },
-  "homepage": "https://github.com/open-project-templates/nodejs-module-typescript#readme",
+  "homepage": "https://github.com/SpeedUp-io/nodejs-notification-sms-smsir#readme",
   "devDependencies": {
     "@types/chai": "^4.2.9",
     "@types/mocha": "^7.0.1",
+    "@types/ms": "^0.7.31",
     "@types/node": "^13.7.4",
     "chai": "^4.2.0",
     "coveralls": "^3.0.9",
@@ -64,5 +62,9 @@
       "lcov"
     ],
     "all": true
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "ms": "^2.1.2"
   }
 }
