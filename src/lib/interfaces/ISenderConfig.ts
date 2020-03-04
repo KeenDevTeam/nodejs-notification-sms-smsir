@@ -17,7 +17,7 @@ type ISenderConfig = {
     /**
      * ms-compatible value (e.g. '30m')
      */
-    authTimeout: string;
+    authTimeout?: string;
 };
 
 export default ISenderConfig;

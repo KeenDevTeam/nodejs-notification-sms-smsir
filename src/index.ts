@@ -2,6 +2,6 @@
  * Module entry point
  */
 
-import * as lib from './lib';
+import SMSSender from './lib';
 
-export default { ...lib }
+export default SMSSender;

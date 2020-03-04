@@ -10,23 +10,24 @@ import ISenderConfig from './interfaces/ISenderConfig';
 import ISendResult from './interfaces/ISendResult';
 
 const AUTH_TOKEN_HEADER_KEY = 'x-sms-ir-secure-token';
+const DEFAULT_AUTH_TIMEOUT = '30m'; // default is 30 minutes
 
-class SmsSender {
+class SMSSender {
 
     /**
      * HTTP client
      */
-    private readonly httpClient: AxiosInstance;
+    protected readonly httpClient: AxiosInstance;
 
     /**
      * Configuration
      */
-    readonly config: ISenderConfig;
+    protected config: ISenderConfig;
 
     /**
      * Authentication information
      */
-    private readonly cache = {
+    protected readonly cache = {
 
         /**
          * Current credit
@@ -64,10 +65,10 @@ class SmsSender {
     /**
      * Renew the authentication token
      */
-    private async renewToken(): Promise<void> {
+    protected async renewToken(): Promise<void> {
 
         // not reached the threshold
-        if (Date.now() - this.cache.lastAuthRetry < ms(this.config.authTimeout)) { return; }
+        if (Date.now() - this.cache.lastAuthRetry < ms(this.config.authTimeout || DEFAULT_AUTH_TIMEOUT)) { return; }
 
         // perform the request
         const authResponse = await this.httpClient.post('/Token',
@@ -76,9 +77,6 @@ class SmsSender {
                 SecretKey: this.config.secret
             },
             {
-                headers: {
-                    [AUTH_TOKEN_HEADER_KEY]: this.cache.authToken
-                },
                 validateStatus: (status: number) => status === 201
             }
         );
@@ -95,7 +93,7 @@ class SmsSender {
     /**
      * Retrieve current balance
      */
-    async currentBalance(): Promise<number> {
+    protected async currentBalance(): Promise<number> {
 
         // renew token
         await this.renewToken();
@@ -123,7 +121,7 @@ class SmsSender {
      * @param message Message content
      * @param config Send configuration
      */
-    async send(phoneNumber: string, message: string, config?: ISendConfig): Promise<ISendResult> {
+    public async send(phoneNumber: string, message: string, config?: ISendConfig): Promise<ISendResult> {
 
         if (!config) {
             throw new Error('config cannot be null or empty');
@@ -135,7 +133,7 @@ class SmsSender {
         // retrieve current credit
         const currentCredit = await this.currentBalance();
 
-        if (currentCredit <= 1) {
+        if (currentCredit < 1) {
             throw new Error(`Current credit is less than 1. So it's not acceptable. Current credit: ${currentCredit}`);
         }
 
@@ -175,4 +173,4 @@ class SmsSender {
     }
 }
 
-export default SmsSender;
+export default SMSSender;
