@@ -7,5 +7,6 @@ tests/
 
 .gitignore
 .npmignore
+.env
 
 tsconfig.json
