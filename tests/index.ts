@@ -14,7 +14,7 @@ import SMSSender from './mock/SMSSenderMock';
 
 chai.use(ChaiAsPromised);
 
-describe('SpeedIO|Notification|SMS|SMS.ir', () => {
+describe('SpeedUP|Notification|SMS|SMS.ir', () => {
 
     describe('integrity', () => {
 

@@ -1,10 +1,9 @@
-# SpeedUp SMS notification
+# SpeedUP SMS notification
 
 SMS notification using [SMS.ir](https://www.sms.ir) provider.
 
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][downloads-image]][downloads-url]
-[![Coverage Status][coveralls-image]][coveralls-url]
 
 ## Installation
 
@@ -47,5 +46,3 @@ MIT
 [npm-url]: https://npmjs.org/package/@speedup/notification-sms-smsir
 [downloads-image]: https://img.shields.io/npm/dt/@speedup/notification-sms-smsir.svg
 [downloads-url]: https://npmjs.org/package/@speedup/notification-sms-smsir
-[coveralls-image]: http://coveralls.io
-[coveralls-url]: https://coveralls.io
