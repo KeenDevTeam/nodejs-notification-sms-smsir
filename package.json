@@ -9,9 +9,7 @@
     "rebuild": "run-s clean build",
     "test": "mocha --require ts-node/register tests/index.ts",
     "coverage": "nyc npm run test",
-    "coveralls": "cat coverage/lcov.info | coveralls",
-    "prepublish": "run-s rebuild coverage",
-    "postpublish": "run-s coveralls"
+    "prepublish": "run-s rebuild test coverage"
   },
   "repository": {
     "type": "git",
