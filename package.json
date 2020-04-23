@@ -1,6 +1,6 @@
 {
   "name": "@speedup/notification-sms-smsir",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SMS notification implementation for SMS.ir",
   "main": "dist/index.js",
   "scripts": {
